@@ -80,7 +80,7 @@ int main ()
 void incrementlevel (struct *personagem player))
 {
 
-    player->hp = (player->hp) + 1;
+    player->level +=  1;
 }
 
 void incrementstatus (struct *player, int status, int qnt)
