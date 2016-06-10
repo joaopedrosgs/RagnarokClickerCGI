@@ -77,13 +77,13 @@ int main ()
 
 // funções
 
-void incrementlevel (struct *personagem player))
+void incrementlevel (struct personagem *player))
 {
 
     player->level +=  1;
 }
 
-void incrementstatus (struct *player, int status, int qnt)
+void incrementstatus (struct personagem *player, int status, int qnt)
 {
 // 0 = força; 1 = vitalidade; 2 = resistencia;
     switch(status)
