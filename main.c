@@ -26,6 +26,7 @@ struct enemy
 };
 
 void incrementlevel();
+void incrementstatus();
 
 
 
@@ -82,7 +83,7 @@ void incrementlevel (struct *personagem player))
     player->hp = (player->hp) + 1;
 }
 
-void incrementlevel (struct *player, int status, int qnt)
+void incrementstatus (struct *player, int status, int qnt)
 {
 // 0 = força; 1 = vitalidade; 2 = resistencia;
     switch(status)
