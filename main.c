@@ -68,6 +68,13 @@ int main ()
 
 
     }
+     case 666: death
+       // o satan veio te buscar
+       monlevel -= 3;
+        break;
+
+
+    }
 
 
     return 0;
