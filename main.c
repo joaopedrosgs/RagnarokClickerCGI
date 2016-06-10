@@ -87,20 +87,20 @@ void incrementlevel (struct *player, int status, int qnt)
 // 0 = força; 1 = vitalidade; 2 = resistencia;
     switch(status)
     case 0:
-{
-    player->forca += 1;
+    {
+    player->forca += qnt;
     }
 
     break;
 case 1:
     {
-        player->vitalidade  += 1;
+        player->vitalidade  += qnt;
     }
 
     break;
 case 2:
     {
-        player->resistencia  += 1;
+        player->resistencia  += qnt;
     }
 
     break;
