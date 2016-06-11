@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <title></title>
+</head>
+
+<body>
+<div class="button">asdsadas</div>    
+<div class="div1"></div>
+</body>
+</html>
+<link rel="stylesheet" href=""><script>
+
+$(".button").click(function(){
+    
+    $.ajax({url:"http://cap.dc.ufscar.br/~726549/cgi-bin/qstring.cgi", success:function(result){
+        
+        $(".div1").html(result);    
+        
+    }});
+    
+    
+});
+</script>

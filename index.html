@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Harmony</title>
+
+    <link rel="stylesheet" href="css/master.css" type="text/css" >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+  </head>
+  <body>
+    <div class="topbar">
+
+    </div>
+    <div class="leftbar">
+<div class="avatar"></div>
+
+      <div class="hp">
+        <div class="hpfill">
+
+        </div>
+
+      </div>
+
+    </div>
+
+<div class="content">
+<div class="monster"><div class="death">
+<div class="effect attack"></div>
+</div></div>
+
+</div>
+  </body>
+<script>
+
+  $(".effect").click(function() {
+    var el     = $(this),
+        newone = el.clone(true);
+
+    el.before(newone);
+      $(".death").toggleClass("hit")
+      
+      
+     
+
+    $(".attack:last").remove();
+
+});
+  </script>
+</html>
