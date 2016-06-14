@@ -156,7 +156,7 @@ body {
 }
 
 .death {
-    overflow: hiddenwidth: 300px;
+    overflow: hidden;width: 300px;
     height: 300px;
     margin: 100px auto;
     animation: breathing 3s linear infinite;
@@ -178,7 +178,7 @@ body {
     };
 }
 
-@keyframes hit {
+@-webkit-keyframes hit {
 
     0% {
         transform: scale(1, 1);
@@ -197,16 +197,22 @@ body {
     };
 }
 
-.hit {
-    animation: hit .1s ease-in-out, bright .1s ease-in-out infinte  !important;
-} ;
 
-@keyframes bright {
-    from {
-        filter: brightness(150%);
+@-webkit-keyframes bright {
+    0% {
+        -webkit-filter: brightness(100%);
     }
 
-    to {
-        filter: brightness(100%);
-    };
+  50% {
+        -webkit-filter: brightness(400%) drop-shadow(0px 0px 10px white);;
+
+    }
+    100% {
+        -webkit-filter: brightness(100%);
+    }
+
+
 }
+.hit {
+    animation:hit .1s linear ,bright .1s linear !important;
+} ;
