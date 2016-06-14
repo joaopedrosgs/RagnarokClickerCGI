@@ -1,15 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct html
-{
-
-    void (*createElement) (char* tag, char* classe, char* content);
-
-    void (*header) (char* title, char* cssfile);
-
-    void (*ending)();
-} html;
 
 void createElement(char* tag, char* classe, char* content);
 void header (char* title, char* cssfile);
@@ -18,12 +9,10 @@ void ending();
 int main()
 {
 
-    html.createElement = createElement;
-    html.header = header;
-    html.ending = ending;
-    html.header("Titulo", "css/master.css");
-    html.createElement("div", "classeloca", "shampoo");
-    html.ending();
+
+    header("Titulo", "css/master.css");
+    createElement("div", "classeloca", "teste connteudo");
+    ending();
 
     return 0;
 }
