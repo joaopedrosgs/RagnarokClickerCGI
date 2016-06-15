@@ -1,10 +1,52 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include <math.h>
+#include <time.h>
 
 
 void createElement(char* tag, char* classe, char* content);
 void header (char* title, char* cssfile);
 void ending();
+
+
+struct monster {
+    int hp;
+    int def;
+    int dropg;
+    int attack;
+    int level;
+    int exp;
+    int shine;
+};
+
+void getmonster (int plevel) {
+
+    struct monster retorno;
+    float multiplier=1;
+    retorno.shine = rand()%100;
+    retorno.level = plevel;
+se vc parar 
+    if(retorno.shine>90) {
+        multiplier = 1.8;
+    }
+  
+  
+    retorno.hp = (int)((pow(plevel, 2.01) + 50 * plevel + (fmod(rand(), plevel) * 3))*multiplier);
+    retorno.attack = (int)(retorno.hp * 0.2 + (fmod(rand(), plevel) / 10));
+    retorno.dropg = (int)((pow(plevel, 1.8) + (fmod(rand(), plevel) * 2))*multiplier);
+    retorno.exp = (int)((pow(plevel, 1.7) + (fmod(rand(), plevel) * 2))*multiplier);
+    retorno.def = (int)(retorno.attack / 3 + (fmod(rand(), plevel) / 7));
+
+
+
+  //  retorno.hp = (plevel*(plevel*(plevel/3)) + 50*plevel + ((int)(rand() %10)))*multiplier;
+   // retorno.hp = ((int)(pow(plevel, 2.01)) + 50 * plevel + ((int)(rand() % plevel * 3)))*multiplier;
+
+        printf("level: %i ----- hp: %i---- attack:%i---- def:%i---- gold:%i ---- exp:%i \n",   retorno.level, retorno.hp, retorno.attack, retorno.def, retorno.dropg, retorno.exp);
+
+}
+
+
 
 int main()
 {
@@ -12,6 +54,13 @@ int main()
 
     header("Titulo", "css/master.css");
     createElement("div", "classeloca", "teste connteudo");
+    int level=0,a=0;
+    sscanf(getenv("QUERY_STRING"), "level=%i", &level);
+    printf("%i\n", level );
+    for (a=0; a<100; a++) {
+     getmonster(level+a);
+     createElement("div","", "------------------------------------------------");
+    }
     ending();
 
     return 0;
