@@ -39,8 +39,6 @@ se vc parar
 
 
 
-  //  retorno.hp = (plevel*(plevel*(plevel/3)) + 50*plevel + ((int)(rand() %10)))*multiplier;
-   // retorno.hp = ((int)(pow(plevel, 2.01)) + 50 * plevel + ((int)(rand() % plevel * 3)))*multiplier;
 
         printf("level: %i ----- hp: %i---- attack:%i---- def:%i---- gold:%i ---- exp:%i \n",   retorno.level, retorno.hp, retorno.attack, retorno.def, retorno.dropg, retorno.exp);
 
