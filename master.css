@@ -1,0 +1,313 @@
+*
+{
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+}
+html
+{
+    height: 100% !important;
+}
+body
+{
+    height: 100%;
+    margin: 0;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#212834+0,171a22+100 */
+
+    background: #212834;
+    /* Old browsers */
+    background:    -moz-linear-gradient(top, #212834 0%, #171a22 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #212834 0%, #171a22 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background:         linear-gradient(to bottom, #212834 0%, #171a22 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#212834', endColorstr='#171a22', GradientType=0);
+    /* IE6-9 */
+
+    ;
+}
+.topbar
+{
+    width: 100%;
+    height: 50px;
+
+    background: url('img/bgtopbar.jpg');
+}
+.leftbar
+{
+    float: left;
+
+    width: 220px;
+    height: calc(100% - 80px);
+    padding: 15px;
+
+    background: url('img/bgleftbar.jpg') repeat-y;
+    box-shadow: 0 0 90px rgba(0, 0, 0, .7);
+}
+.hp
+{
+    overflow: hidden;
+
+    width: 100%;
+    height: 10px;
+    margin: 10px 0;
+
+    border: 2px solid rgba(0, 0, 0, .3);
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, .3);
+}
+.hpfill
+{
+    float: left;
+
+    width: 70%;
+    height: 100%;
+
+    -webkit-animation: AnimationName 2s ease infinite;
+       -moz-animation: AnimationName 2s ease infinite;
+            animation: AnimationName 2s ease infinite;
+
+    border-radius: 15px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#980000+0,ff0000+50,980000+100 */
+    background: rgb(152, 0, 0);
+    /* Old browsers */
+    background:    -moz-linear-gradient(left, rgba(152, 0, 0, 1) 0%, rgba(255, 0, 0, 1) 50%, rgba(152, 0, 0, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(152, 0, 0, 1) 0%, rgba(255, 0, 0, 1) 50%, rgba(152, 0, 0, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background:         linear-gradient(to right, rgba(152, 0, 0, 1) 0%, rgba(255, 0, 0, 1) 50%, rgba(152, 0, 0, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background-size: 400% 400%;
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .7);
+
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#980000', endColorstr='#980000', GradientType=1);
+    /* IE6-9 */
+
+    ;
+}
+.avatar
+{
+    width: 150px;
+    height: 150px;
+    margin: 50px auto;
+
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .3);
+    ;
+}
+.content
+{
+    width: calc(100% - 250px);
+    height: auto;
+    margin-left: 250px;
+}
+.effect
+{
+    width: 300px;
+    height: 300px;
+
+    opacity: 0;
+}
+@keyframes attackanimation
+{
+    0%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        opacity: 0;
+        background-position: -1500px 0;
+    }
+}
+.attack
+{
+    animation: attackanimation .3s steps(5);
+
+    background: url('img/attack.png') no-repeat;
+    background-size: auto 300px !important;
+}
+.death
+{
+    position: relative;
+    z-index: 5 !important;
+
+    width: 300px;
+    height: 300px;
+    margin: 100px auto;
+
+    animation: breathing 3s linear infinite;
+
+    background: url(monsprite/death.png) no-repeat top;
+}
+@keyframes breathing
+{
+    0%
+    {
+        transform: scale(1, 1);
+    }
+    50%
+    {
+        transform: scale(1, .97);
+    }
+    100%
+    {
+        transform: scale(1, 1);
+    }
+}
+@-webkit-keyframes hit
+{
+    0%
+    {
+        transform: scale(1, 1);
+    }
+    50%
+    {
+        transform: scale(1, .80);
+    }
+    75%
+    {
+        transform: scale(1, 1.20) -webkit-filter: brightness(700%);
+    }
+    100%
+    {
+        transform: scale(1, 1);
+    }
+}
+@-webkit-keyframes bright
+{
+    0%
+    {
+        -webkit-filter: brightness(100%);
+    }
+    50%
+    {
+        -webkit-filter: brightness(400%) drop-shadow(0px 0px 10px white);
+    }
+    100%
+    {
+        -webkit-filter: brightness(100%);
+    }
+}
+.hit
+{
+    animation: hit .1s linear, bright .1s linear, breathing 3s linear infinite !important;
+}
+
+@-webkit-keyframes damageeffect
+{
+    0%
+    {
+        -webkit-transform: scale(1) translate(0px, 0px);
+           -moz-transform: scale(1) translate(0px, 0px);
+            -ms-transform: scale(1) translate(0px, 0px);
+             -o-transform: scale(1) translate(0px, 0px);
+                transform: scale(1) translate(0px, 0px);
+    }
+    50%
+    {
+        -webkit-transform: scale(.7) translate(50px, -50px);
+           -moz-transform: scale(.7) translate(50px, -50px);
+            -ms-transform: scale(.7) translate(50px, -50px);
+             -o-transform: scale(.7) translate(50px, -50px);
+                transform: scale(.7) translate(50px, -50px);
+    }
+    65%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        -webkit-transform: scale(.2) translate(0px, -100px);
+           -moz-transform: scale(.2) translate(0px, -100px);
+            -ms-transform: scale(.2) translate(0px, -100px);
+             -o-transform: scale(.2) translate(0px, -100px);
+                transform: scale(.2) translate(0px, -100px);
+
+        opacity: 0;
+    }
+}
+@keyframes damageeffect
+{
+    0%
+    {
+        -webkit-transform: scale(1) translate(0px, 0px);
+           -moz-transform: scale(1) translate(0px, 0px);
+            -ms-transform: scale(1) translate(0px, 0px);
+             -o-transform: scale(1) translate(0px, 0px);
+                transform: scale(1) translate(0px, 0px);
+    }
+    50%
+    {
+        -webkit-transform: scale(.7) translate(-50px, -100px);
+           -moz-transform: scale(.7) translate(-50px, -100px);
+            -ms-transform: scale(.7) translate(-50px, -100px);
+             -o-transform: scale(.7) translate(-50px,- 100px);
+                transform: scale(.7) translate(-50px, -100px);
+    }
+    65%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        -webkit-transform: scale(.2) translate(0px, 0px);
+           -moz-transform: scale(.2) translate(0px, 0px);
+            -ms-transform: scale(.2) translate(0px, 0px);
+             -o-transform: scale(.2) translate(0px, 0px);
+                transform: scale(.2) translate(0px, 0px);
+
+        opacity: 0;
+    }
+}
+.attackbubble
+{
+    font-family: Arial;
+    font-size: 36px;
+
+    position: absolute;
+    z-index: 6;
+
+    width: 100px;
+    height: 100px;
+
+    -webkit-animation: damageeffect .5s  cubic-bezier(0,1,.83,.67) !important;
+       -moz-animation: damageeffect .5s  cubic-bezier(0,1,.83,.67) !important;
+        -ms-animation: damageeffect .5s  cubic-bezier(0,1,.83,.67) !important;
+         -o-animation: damageeffect .5s  cubic-bezier(0,1,.83,.67) !important;
+            animation: damageeffect .5s  cubic-bezier(0,1,.83,.67) !important;
+
+    color: white;
+    text-shadow: 2px 0 0 red, -2px 0 0 red, 0 2px 0 red, 0 -2px 0 red, 1px 1px red, -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red;
+
+    animation-fill-mode: forwards;
+}
+
+.shadowwrap
+{
+    position: relative;
+    top: -150px;
+
+    width: 190px;
+    margin: 0 auto;
+    padding: 10px;
+
+    opacity: .3;
+
+    -webkit-filter: blur(10px);
+            filter: blur(10px);
+}
+.shadow
+{
+    width: 100%;
+    height: 20px;
+    margin: 0 auto;
+
+    border-radius: 50%;
+    background: black;
+}
