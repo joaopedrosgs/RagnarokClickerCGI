@@ -15,14 +15,19 @@
 </html>
 <link rel="stylesheet" href=""><script>
 
+
+
 $(".button").click(function(){
-    
-    $.ajax({url:"http://cap.dc.ufscar.br/~726549/cgi-bin/qstring.cgi", success:function(result){
-        
-        $(".div1").html(result);    
-        
-    }});
+      $.getJSON('http://192.168.1.106/cgi-bin/v2/main.cgi?request=2', function (data) {
+      console.log(data);
+     $(".div1").html(JSON.stringify(data));  
+
+      });
+
+
+
     
     
 });
+
 </script>
