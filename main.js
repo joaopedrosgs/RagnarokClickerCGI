@@ -1,30 +1,38 @@
-
-
-var monstro;
-$.ajaxSetup({
-    async: false
-});
-     $.getJSON('http://192.168.1.106/cgi-bin/v2/main.cgi?request=2', function (data) {
-        monstro = data;
- 
-      });
-
-
 var actualhppx =  parseFloat($(".hpfill").css('width'));
 var totalhppx =  parseFloat($(".hp").css('width'));
 var actualhp = actualhppx/totalhppx;
 var totalhp = 100;
+var damage = 0;
+
+var monstro;
+function getmonster(){
+
+  $.ajaxSetup({
+    async: false
+});
+     $.getJSON('http://192.168.1.106/cgi-bin/v2/main.cgi?request=2', function (data) {
+        monstro = data;
+          $(".death").css({ "background-image":"url('css/monsprite/"+ monstro.sprite +".gif')"});
+
+          actualhppx = totalhppx;
+          actualhp = actualhppx/totalhppx;
+ 
+      });
+
+}
+getmonster();
+
+
+
 //var sprite = monstro.sprite;
 
-$(".death").css({ "background-image":"url('css/monsprite/"+ monstro.sprite +".gif')"});
-var lastdamage;
 
 console.log("asdada");
 //console.log(monstro.sprite);
 
 
 function attack(e) {
-var damage = Math.floor(Math.random() * monstro.attack) + monstro.attack/2; 
+damage = Math.floor(Math.random() * monstro.attack) + monstro.attack/2; 
 lastdamage = damage; 
 actualhp = parseFloat((((monstro.hp*actualhp) - damage)/monstro.hp).toFixed(2));
 $(".hpfill").css('width', ''+ (actualhp*100) +'%');
@@ -32,15 +40,7 @@ $(".hpfill").css('width', ''+ (actualhp*100) +'%');
 console.log(actualhp);
 if(actualhp <= 0)  {
 
-     $.getJSON('http://192.168.1.106/cgi-bin/v2/main.cgi?request=2', function (data) {
-        monstro = data;
-        console.log("asdasd");
-        $(".death").css({ "background-image":"url('css/monsprite/"+ monstro.sprite +".gif')"});
-
-actualhppx = totalhppx;
-actualhp = actualhppx/totalhppx;
- 
-      });
+getmonster();
 
 }
 
