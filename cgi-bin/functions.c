@@ -30,14 +30,14 @@ struct monster {
 	int shine;
 };
 
-typedef enum locais {
+typedef enum _locais {
 	CIDADE,
 	ARENA,
 	REST
 } locais;
 
 
-typedef enum requests {
+typedef enum _requests {
 	NEWGAME,
 	CHANGELOCATION,
 	MONSTERDEATH,
@@ -46,7 +46,7 @@ typedef enum requests {
 	DEATH
 } requests;
 
-typedef enum status {
+typedef enum _status {
 	FORCA,
 	VITALIDADE,
 	RESISTENCIA
@@ -75,26 +75,28 @@ void monsterJson(struct monster *monstro) {
 
 struct monster getmonster (int plevel) {
 
-	struct monster retorno;
+	struct monster monstro;
 
 	float multiplier = 1;
 	int shine = (rand() % plevel) % 100;
-	retorno.level = plevel;
-	retorno.shine = 0;
+	monstro.level = plevel;
+	monstro.shine = 0;
 
 	if (shine > 90) {
 		multiplier = 1.8;
-		retorno.shine = 1;
+		monstro.shine = 1;
 	}
-	retorno.sprite =  (rand() % 12) + 1;
-	retorno.hp = (int)((pow(plevel, 2.01) + 50 * plevel + ( rand() % (retorno.level + 1) * 3)) * multiplier);
-	retorno.attack = (int)(retorno.hp * 0.2 + ( rand() % (retorno.level + 1) / 10));
-	retorno.dropg = (int)((pow(plevel, 1.8) + ( rand() % (retorno.level + 1) * 2)) * multiplier);
-	retorno.exp = (int)((pow(plevel, 1.7) + ( rand() % (retorno.level + 1) * 2)) * multiplier);
-	retorno.def = (int)(retorno.attack / 3 + ( rand() % (retorno.level + 1) / 7));
 
 
-	return retorno;
+	monstro.sprite =  (rand() % 39) + 1;
+	monstro.hp = (int)((pow(monstro.level, 2.01) + 50 * monstro.level + ( rand() % (monstro.level + 1) * 3)) * multiplier);
+	monstro.attack = (int)(monstro.hp * 0.2 + ( rand() % (monstro.level + 1) / 10));
+	monstro.dropg = (int)((pow(monstro.level, 1.8) + ( rand() % (monstro.level + 1) * 2)) * multiplier);
+	monstro.exp = (int)((pow(monstro.level, 1.7) + ( rand() % (monstro.level + 1) * 2)) * multiplier);
+	monstro.def = (int)(monstro.attack / 3 + ( rand() % (monstro.level + 1) / 7));
+
+
+	return monstro;
 
 }
 
@@ -148,25 +150,25 @@ void incrementlevel (struct personagem *player)
 	player->level +=  1;
 }
 
-void incrementstatus (struct personagem *player, status status, int qnt)
+void incrementstatus (struct personagem *player, enum _status status, int qnt)
 {
 // 0 = força; 1 = vitalidade; 2 = resistencia;
 	switch (status) {
-	case 0:
+	case FORCA:
 	{
 		player->forca += qnt;
 		break;
 	}
 
 
-	case 1:
+	case VITALIDADE:
 	{
 		player->vitalidade  += qnt;
 		break;
 	}
 
 
-	case 2:
+	case RESISTENCIA:
 	{
 		player->resistencia  += qnt;
 		break;

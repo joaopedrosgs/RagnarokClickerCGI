@@ -23,8 +23,8 @@ int main ()
 
 
 
-
-   sscanf(data, "request=%i", &request);
+    int *level = (int*) malloc(sizeof(int));
+   sscanf(data, "request=%i&level=%i", &request, &level);
     int location; // 0 - cidade ; 1 - lutando; 2 - resting;
     int monlevel;
     cType();
@@ -51,7 +51,7 @@ int main ()
     case MONSTERDEATH: // on monster death
     {
 
-        struct monster monstro = getmonster(rand() % 12 + 1);
+        struct monster monstro = getmonster(rand() % 38 + 1);
         monsterJson(&monstro);
          break;
     }
@@ -75,7 +75,7 @@ int main ()
 
     }
 
-
+    free(level);
     return 0;
 }
 
