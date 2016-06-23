@@ -5,13 +5,13 @@ var totalhp = 100;
 var damage = 0;
 
 var monstro;
-var player = {level:12, hp:100, forca:10, resistencia:12, gold:100};
+var player = {level:12, hp:100, forca:10,attack: 20, resistencia:12, gold:100};
 function getmonster(){
 
   $.ajaxSetup({
     async: false
 });
-     $.getJSON('http://192.168.1.23/cgi-bin/main.cgi?request=2', function (data) {
+     $.getJSON('http://localhost/cgi-bin/main.cgi?request=2', function (data) {
         monstro = data;
           $(".monstro").css({ "background-image":"url('css/monsprite/"+ monstro.sprite +".gif')"});
 
@@ -29,7 +29,7 @@ function fillenemyhp(){
 }
 
 getmonster();
-console.log(player.level, player.hp);
+
 
 function updateuser(){
 	$(".gold").html(player.gold);
@@ -38,7 +38,7 @@ function updateuser(){
 
 
 function attack(e) {
-damage = Math.floor(Math.random() * monstro.attack) + monstro.attack/2; 
+damage = Math.floor(Math.random() * player.attack) + player.attack/2; 
 lastdamage = damage; 
 actualhp = parseFloat((((monstro.hp*actualhp) - damage)/monstro.hp).toFixed(2));
 $("#enemyhpfill").css('width', ''+ (actualhp*100) +'%');
