@@ -5,34 +5,44 @@
     <title>Harmony</title>
 
     <link rel="stylesheet" href="css/master.css" type="text/css" >
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="jquery-3.0.0.min.js"></script>
 
   </head>
   <body>
     <div class="topbar">
-
-    </div>
-    <div class="leftbar">
-<div class="avatar"></div>
-
-      <div class="hp">
-        <div id="hpfill" class="hpfill">
+    <div class="charicon"></div>
+  <div class="hp" id="playerhp" >
+        <div  id="playerhpfill" class="hpfill">
 
         </div>
+</div>
+          <div class="gold"></div>
 
-      </div>
 
     </div>
 
+
 <div class="content">
-<div id="monster" class="monster"><div class="death" id="death">
+<div class="wrapmonster"></div>
+<div><div class="monstro" id="monstro">
 <div class="effect attack"></div>
 </div></div>
 <div class="shadowwrap"><div class="shadow"></div>
-</div>
-<div id="monstro" class="testejs"> </div>
-</div>
 
+</div>
+  <div class="hp">
+        <div id="enemyhpfill" class="hpfill">
+
+        </div>
+</div>
+    <div class="statusbar">
+<div class="char"></div>
+    
+
+      </div>
+
+
+    </div>
   </body>
 
       <script src="main.js"></script>

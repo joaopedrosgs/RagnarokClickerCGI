@@ -1,46 +1,54 @@
-var actualhppx =  parseFloat($(".hpfill").css('width'));
+var actualhppx =  parseFloat($("#enemyhpfill").css('width'));
 var totalhppx =  parseFloat($(".hp").css('width'));
 var actualhp = actualhppx/totalhppx;
 var totalhp = 100;
 var damage = 0;
 
 var monstro;
+var player = {level:12, hp:100, forca:10, resistencia:12, gold:100};
 function getmonster(){
 
   $.ajaxSetup({
     async: false
 });
-     $.getJSON('http://192.168.1.106/cgi-bin/v2/main.cgi?request=2', function (data) {
+     $.getJSON('http://192.168.1.23/cgi-bin/main.cgi?request=2', function (data) {
         monstro = data;
-          $(".death").css({ "background-image":"url('css/monsprite/"+ monstro.sprite +".gif')"});
+          $(".monstro").css({ "background-image":"url('css/monsprite/"+ monstro.sprite +".gif')"});
 
-          actualhppx = totalhppx;
-          actualhp = actualhppx/totalhppx;
+  
  
       });
 
 }
+function fillenemyhp(){
+
+      actualhppx = totalhppx;
+          actualhp = actualhppx/totalhppx;
+          $("#enemyhpfill").css('width', ''+ (actualhp*100) +'%');
+
+}
+
 getmonster();
+console.log(player.level, player.hp);
 
+function updateuser(){
+	$(".gold").html(player.gold);
 
-
-//var sprite = monstro.sprite;
-
-
-console.log("asdada");
-//console.log(monstro.sprite);
+}
 
 
 function attack(e) {
 damage = Math.floor(Math.random() * monstro.attack) + monstro.attack/2; 
 lastdamage = damage; 
 actualhp = parseFloat((((monstro.hp*actualhp) - damage)/monstro.hp).toFixed(2));
-$(".hpfill").css('width', ''+ (actualhp*100) +'%');
+$("#enemyhpfill").css('width', ''+ (actualhp*100) +'%');
 
 console.log(actualhp);
 if(actualhp <= 0)  {
-
+fillenemyhp();
 getmonster();
+
+updateuser();
 
 }
 
@@ -65,7 +73,7 @@ e.preventDefault;
 
     $(".attack:last").remove();
 
-    $('.death').prepend("<div class='attackbubble'>"+ lastdamage +"</div>");
+    $('.monstro').prepend("<div class='attackbubble'>"+ lastdamage +"</div>");
 setTimeout(function() {
   $('.attackbubble:last').remove();
 }, 500);
@@ -73,7 +81,7 @@ setTimeout(function() {
 
 
 //--------------------------
-divhit = document.getElementById("death");
+divhit = document.getElementById("monstro");
 
 
 divhit.addEventListener("click", function(e) {
