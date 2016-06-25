@@ -8,7 +8,7 @@
 // STRUCTS
 struct personagem
 {
-	char nome[20];
+	int id;
 	int level;
 	int hp;
 	int vitalidade;
@@ -38,6 +38,7 @@ typedef enum _locais {
 
 
 typedef enum _requests {
+	DEFAULT,
 	NEWGAME,
 	CHANGELOCATION,
 	MONSTERDEATH,
@@ -110,9 +111,14 @@ void cType () {
 	printf("%s%c%c\n", "Content-Type:text/html;charset=UTF-8", 13, 10);
 
 }
-void createElement(char* tag, char* classe, char* content)
+void createElement( char* classe,char* id, char* content)
 {
-	printf("<%s class='%s'>%s</%s>\n", tag, classe, content, tag);
+
+	printf("<div class='%s' id='%s'>%s\n", classe, id, content );
+
+}
+void closeElement() {
+	printf("</div>\n");
 
 }
 
@@ -128,7 +134,7 @@ void header (char* title, char* cssfile)
 	printf("<meta charset=\"utf-8\">\n");
 	printf("<title>%s</title>\n", title);
 	printf("<link rel=\"stylesheet\" href=\"%s\">\n", cssfile);
-	//printf("<script src=\"script.js\"></script>");
+		printf("<script src='../jquery-3.0.0.min.js'></script>");
 
 	printf("</head>\n");
 
@@ -138,7 +144,39 @@ void header (char* title, char* cssfile)
 void ending()
 {
 	printf("</body>\n");
+
+	printf("<script src='../main.js'></script>\n");
+
 	printf("</html>\n");
+}
+
+void printgame(struct personagem *player) {
+
+
+
+printf("<div class='statusbar'>");
+printf("<div class='char'></div>\n");
+
+      printf(" <div class='hp' id='playerhp' >");
+        printf(" <div  id='playerhpfill' class='hpfill'>");
+        printf(" </div>");
+      printf(" </div>");
+      printf(" <div class='gold'></div>");
+      
+    printf(" </div>");
+    printf(" <div class='content'>");
+      printf(" <div class='wrapmonster'>");
+        printf(" <div><div class='monstro' id='monstro'>");
+          printf(" <div class='effect attack'></div>");
+        printf(" </div></div>");
+        printf(" <div class='shadowwrap'><div class='shadow'></div>");
+      printf(" </div>");
+      printf(" <div class='hp' id='enemyhp'>");
+        printf(" <div id='enemyhpfill' class='hpfill'>");
+        printf(" </div>");
+      printf(" </div>");
+    printf(" </div>");
+  printf(" </div>");
 }
 
 

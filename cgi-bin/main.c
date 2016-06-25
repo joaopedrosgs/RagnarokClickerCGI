@@ -23,24 +23,49 @@ int main ()
 
 
 
-    int *level = (int*) malloc(sizeof(int));
-   sscanf(data, "request=%i&level=%i", &request, &level);
+    int *id = (int*) malloc(sizeof(int));
+     sscanf(data, "request=%i&id=%i", &request, id);
+       
+   if(&id==0){
+     request = 1;
+}
+
     int location; // 0 - cidade ; 1 - lutando; 2 - resting;
     int monlevel;
     cType();
+    
+ 
 
-
-//header("titulo", "css.css");
 //createElement("div", "teste","testee");
-//ending();
+
 
     switch (request)
     {
+    case DEFAULT:
+    {
+  header("titulo", "../css/master.css");
+
+        printgame(&player);
+            ending();
+         break;
+    }
+   
 
     case NEWGAME: // start a new game
     {
+            int numero = rand()%99999;
+            char *nomearquivo= (char *) malloc(sizeof(char)*21);
+           // nomearquivo = "teste.pgr";
+           sprintf(nomearquivo, "jogadores/%d.pgr", numero);
+           printf("%s", nomearquivo);
+           FILE *arquivo;
+            arquivo=fopen(nomearquivo, "wb");
+            if(arquivo == NULL) {
 
+                printf("(ERRO\n");
+           }
             break;
+           
     }
 
 
@@ -75,7 +100,8 @@ int main ()
 
     }
 
-    free(level);
+free(id);
+
     return 0;
 }
 
