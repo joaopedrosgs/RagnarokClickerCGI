@@ -19,10 +19,10 @@ function getmonster() {
     $.ajaxSetup({
         async: false
     });
-    $.getJSON('http://cap.dc.ufscar.br/~726549/cgi-bin/main.cgi?request=2', function(data) {
+    $.getJSON('http://cap.dc.ufscar.br/~726549/cgi-bin/index.cgi?request=3&id=210', function(data) {
         monstro = data;
         $(".monstro").css({
-            "background-image": "url('css/monsprite/" + monstro.sprite + ".gif')"
+            "background-image": "url('../css/monsprite/" + monstro.sprite + ".gif')"
         });
 
 
