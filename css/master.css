@@ -62,22 +62,13 @@ body
 {
     height: 100%;
     margin: 0;
+    padding-top: .1px;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#212834+0,171a22+100 */
 
-    background: #212834;
-    /* Old browsers */
-    background:    -moz-linear-gradient(top, #212834 0%, #171a22 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, #212834 0%, #171a22 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background:         linear-gradient(to bottom, #212834 0%, #171a22 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#212834', endColorstr='#171a22', GradientType=0);
-    /* IE6-9 */
-    ;
+    background: url('img/bg.jpg') #000 center no-repeat;
+    -webkit-box-shadow: inset 0 0 204px 71px rgba(0,0,0,.75);
+       -moz-box-shadow: inset 0 0 204px 71px rgba(0,0,0,.75);
+            box-shadow: inset 0 0 204px 71px rgba(0,0,0,.75);
 }
 .topbar
 {
@@ -91,11 +82,13 @@ body
 .statusbar
 {
     float: right;
-text-align:center;
+
     min-width: 300px;
     max-width: 20%;
     height: calc(100% - 30px);
     padding: 15px 0;
+
+    text-align: center;
 
     background: rgba(0,0,0,.6);
     box-shadow: 0 0 90px rgba(0, 0, 0, .7);
@@ -103,8 +96,6 @@ text-align:center;
 .hp
 {
     overflow: hidden;
-
-
 
     height: 10px;
     margin: 0 auto;
@@ -147,11 +138,6 @@ text-align:center;
     width: 100%;
     height: calc(100% - 350px);
     padding-top: 150px;
-
-    background: url('img/bg.jpg') center no-repeat;
-    -webkit-box-shadow: inset 0 0 204px 71px rgba(0,0,0,.75);
-       -moz-box-shadow: inset 0 0 204px 71px rgba(0,0,0,.75);
-            box-shadow: inset 0 0 204px 71px rgba(0,0,0,.75);
 }
 
 .effect
@@ -365,13 +351,15 @@ text-align:center;
 }
 .gold
 {
-    display: inline-block;
-    margin: 0 auto;
     font-size: 24px;
     line-height: 50px;
 
+    display: inline-block;
+
+    width: auto;
+    margin: 0 auto;
     padding-left: 30px;
-width: auto;
+
     text-align: center;
 
     color: white;
@@ -407,10 +395,49 @@ width: auto;
 }
 #playerhp
 {
-    margin: 15px auto;
     width: 200px;
+    margin: 15px auto;
 }
-#enemyhp {
-width:300px;
+#enemyhp
+{
+    width: 300px;
+}
+.loginbox
+{
+    position: relative;
 
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 20%;
+    padding: 20px;
+
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.3);
+}
+.loginbox input
+{
+    display: block;
+
+    width: 300px;
+    padding: 10px 0;
+
+    text-align: center;
+
+    border: none;
+    border-radius: 4px;
+}
+#id
+{
+    margin-bottom: 10px;
+}
+#submit
+{
+    font-weight: bold;
+
+    color: white;
+    background-color: #e34234;
+    -webkit-box-shadow: inset 0 -9px 11px 0 rgba(50, 50, 50, .3);
+       -moz-box-shadow: inset 0 -9px 11px 0 rgba(50, 50, 50, .3);
+            box-shadow: inset 0 -9px 11px 0 rgba(50, 50, 50, .3);
+    text-shadow: 1px 1px 0 rgba(0,0,0,.3);
 }

@@ -3,7 +3,8 @@ var totalhppx = parseFloat($("#enemyhp").css('width'));
 var actualhp = actualhppx / totalhppx;
 var totalhp = 100;
 var damage = 0;
-
+var playerid = $('#id').val();
+console.log(playerid);
 var monstro;
 var player = {
     level: 12,
@@ -17,9 +18,9 @@ var player = {
 function getmonster() {
 
     $.ajaxSetup({
-        async: false
+        async: true
     });
-    $.getJSON('http://cap.dc.ufscar.br/~726549/cgi-bin/index.cgi?request=3&id=210', function(data) {
+    $.getJSON('index.cgi?request=2&id='+playerid+'', function(data) {
         monstro = data;
         $(".monstro").css({
             "background-image": "url('../css/monsprite/" + monstro.sprite + ".gif')"

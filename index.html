@@ -7,30 +7,16 @@
     <script src="jquery-3.0.0.min.js"></script>
   </head>
   <body>
-    
-    <div class="statusbar">
-      <div class="char"></div>
-      <!-- <div class="charicon"></div> -->
-      <div class="hp" id="playerhp" >
-        <div  id="playerhpfill" class="hpfill">
-        </div>
-      </div>
-      <div class="gold"></div>
+<div class="loginbox">  
+  <form action="cgi-bin/index.cgi" method="GET">
       
-    </div>
-    <div class="content">
-      <div class="wrapmonster">
-        <div><div class="monstro" id="monstro">
-          <div class="effect attack"></div>
-        </div></div>
-        <div class="shadowwrap"><div class="shadow"></div>
-      </div>
-      <div class="hp">
-        <div id="enemyhpfill" class="hpfill">
-        </div>
-      </div>
-    </div>
-  </div>
+      <input  type="hidden"  name="request" id="request" value="0">
+            <input type="number" id="id" name="id" max="32767" placeholder="Digite o seu ID" required>
+
+     <input type="submit" id="submit" value="JOGAR" >
+
+  </form>
+</div>
 </body>
 <script src="main.js"></script>
 </html>

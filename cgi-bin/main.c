@@ -1,10 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "functions.c"
-
 #include <time.h>
 
-
+#include "functions.c"
 
 
 int main ()
@@ -13,77 +11,58 @@ int main ()
 
     srand ( time(NULL) ); // numeros realmente aleatorios
 
-    struct personagem player; // iniciando player
+    personagem *player = (personagem*)calloc(1, sizeof(personagem)); // iniciando player
 
     char *data = NULL; 
-   data = getenv("QUERY_STRING");
-    int request=0;
-
-
-
-
-
+    data = getenv("QUERY_STRING");
+    int *request = (int*) malloc(sizeof(int));
     int *id = (int*) malloc(sizeof(int));
-     sscanf(data, "request=%i&id=%i", &request, id);
-       
-   if(&id==0){
-     request = 1;
+
+
+
+     sscanf(data, "request=%i&id=%i", request, id);
+        
+   if(*id==0){
+    cType();
+    printf("ID = 0, volte na página inicial e digite um ID válido\n");
+     return 0;
 }
 
-    int location; // 0 - cidade ; 1 - lutando; 2 - resting;
+    *player = getcharfromfile(*id);
     int monlevel;
+  
     cType();
-    
  
 
 //createElement("div", "teste","testee");
 
 
-    switch (request)
+    switch (*request)
     {
     case DEFAULT:
     {
   header("titulo", "../css/master.css");
+printf("<input type='hidden' value='%i' name='id' id='id'>", *id);
+        printgame(player);
 
-        printgame(&player);
+
             ending();
          break;
     }
    
 
-    case NEWGAME: // start a new game
-    {
-            int numero = rand()%99999;
-            char *nomearquivo= (char *) malloc(sizeof(char)*21);
-           // nomearquivo = "teste.pgr";
-           sprintf(nomearquivo, "jogadores/%d.pgr", numero);
-           printf("%s", nomearquivo);
-           FILE *arquivo;
-            arquivo=fopen(nomearquivo, "wb");
-            if(arquivo == NULL) {
-
-                printf("(ERRO\n");
-           }
-            break;
-           
-    }
-
-
-    case CHANGELOCATION: // change location
-
-        break;
 
     case MONSTERDEATH: // on monster death
     {
 
-        struct monster monstro = getmonster(rand() % 38 + 1);
+        monster monstro = getmonster(player->level);
         monsterJson(&monstro);
          break;
     }
    
 
     case RECOVERHP: // recover hp
-        player.hp = player.vitalidade;
+        player->hp = player->vitalidade*10;
         break;
 
     case INCRESTATS: //increment status
@@ -92,7 +71,7 @@ int main ()
 
 
 
-    case 666: //death
+    case DEATH: //death
         // o satan veio te buscar
         monlevel -= 3;
         break;
@@ -101,7 +80,8 @@ int main ()
     }
 
 free(id);
-
+free(request);
+free(player);
     return 0;
 }
 

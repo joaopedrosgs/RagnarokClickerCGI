@@ -6,7 +6,7 @@
 
 
 // STRUCTS
-struct personagem
+typedef struct
 {
 	int id;
 	int level;
@@ -17,9 +17,9 @@ struct personagem
 	int gold;
 
 
-};
+}personagem;
 
-struct monster {
+typedef struct {
 	int sprite;
 	int hp;
 	int def;
@@ -28,19 +28,13 @@ struct monster {
 	int level;
 	int exp;
 	int shine;
-};
+}monster;
 
-typedef enum _locais {
-	CIDADE,
-	ARENA,
-	REST
-} locais;
 
 
 typedef enum _requests {
 	DEFAULT,
 	NEWGAME,
-	CHANGELOCATION,
 	MONSTERDEATH,
 	RECOVERHP,
 	INCRESTATS,
@@ -58,7 +52,7 @@ typedef enum _status {
 
 
 
-void monsterJson(struct monster *monstro) {
+void monsterJson(monster *monstro) {
 
 	printf("{\"sprite\": %i,\"hp\":%i,\"def\":%i,\"dropg\":%i,\"attack\":%i,\"level\":%i,\"exp\":%i, \"shine\":%i}",
 	       monstro->sprite,
@@ -74,9 +68,9 @@ void monsterJson(struct monster *monstro) {
 }
 
 
-struct monster getmonster (int plevel) {
+monster getmonster (int plevel) {
 
-	struct monster monstro;
+	monster monstro;
 
 	float multiplier = 1;
 	int shine = (rand() % plevel) % 100;
@@ -89,7 +83,7 @@ struct monster getmonster (int plevel) {
 	}
 
 
-	monstro.sprite =  (rand() % 39) + 1;
+	monstro.sprite =  (monstro.level % 39);
 	monstro.hp = (int)((pow(monstro.level, 2.01) + 50 * monstro.level + ( rand() % (monstro.level + 1) * 3)) * multiplier);
 	monstro.attack = (int)(monstro.hp * 0.2 + ( rand() % (monstro.level + 1) / 10));
 	monstro.dropg = (int)((pow(monstro.level, 1.8) + ( rand() % (monstro.level + 1) * 2)) * multiplier);
@@ -150,13 +144,13 @@ void ending()
 	printf("</html>\n");
 }
 
-void printgame(struct personagem *player) {
+void printgame(personagem *player) {
 
 
 
 printf("<div class='statusbar'>");
 printf("<div class='char'></div>\n");
-
+printf("%i, %i", player->id, player->hp);
       printf(" <div class='hp' id='playerhp' >");
         printf(" <div  id='playerhpfill' class='hpfill'>");
         printf(" </div>");
@@ -182,13 +176,13 @@ printf("<div class='char'></div>\n");
 
 //----------------------PLAYER----------------------------------
 
-void incrementlevel (struct personagem *player)
+void incrementlevel (personagem *player)
 {
 
 	player->level +=  1;
 }
 
-void incrementstatus (struct personagem *player, enum _status status, int qnt)
+void incrementstatus (personagem *player, enum _status status, int qnt)
 {
 // 0 = força; 1 = vitalidade; 2 = resistencia;
 	switch (status) {
@@ -215,3 +209,43 @@ void incrementstatus (struct personagem *player, enum _status status, int qnt)
 
 	}
 }
+
+personagem getcharfromfile(int id) {
+
+	FILE *arquivo;
+    char *nomearquivo= (char *) malloc(sizeof(char)*21);
+    sprintf(nomearquivo, "jogadores/%d.pgr", id);
+    personagem retorno;
+	arquivo = fopen(nomearquivo, "rb");
+
+
+		if(arquivo == NULL) {
+
+			arquivo = fopen(nomearquivo, "wb");
+			if(arquivo != NULL){
+				retorno.id = id;
+				retorno.level = 1;
+				retorno.hp = 50;
+				retorno.vitalidade = 5;
+				retorno.forca = 5;
+				retorno.resistencia= 5;
+				retorno.gold = 50;
+
+
+				fwrite(&retorno, sizeof(retorno),1, arquivo );
+
+
+
+	}
+}
+
+
+
+		fread(&retorno, sizeof(retorno),1, arquivo);
+		return retorno;
+
+
+
+
+}
+
