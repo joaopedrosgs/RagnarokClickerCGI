@@ -81,15 +81,17 @@ body
 }
 .statusbar
 {
+    position: relative;
+
     float: right;
 
-    min-width: 300px;
-    max-width: 20%;
+    width: 300px;
     height: calc(100% - 30px);
     padding: 15px 0;
 
     text-align: center;
 
+    color: white;
     background: rgba(0,0,0,.6);
     box-shadow: 0 0 90px rgba(0, 0, 0, .7);
 }
@@ -108,7 +110,7 @@ body
 {
     float: left;
 
-    width: 100%;
+    width: 200px;
     height: 100%;
 
     -webkit-animation: hpanimation 2s ease infinite;
@@ -122,22 +124,11 @@ body
        -moz-box-shadow: inset 1px 1px 0 1px rgba(255,255,255,.3);
             box-shadow: inset 1px 1px 0 1px rgba(255,255,255,.3);
 }
-.avatar
-{
-    float: left;
 
-    width: 150px;
-    height: 150px;
-    margin: 50px auto;
-
-    border-radius: 50%;
-    background: rgba(0, 0, 0, .3);
-}
 .content
 {
     width: 100%;
-    height: calc(100% - 350px);
-    padding-top: 150px;
+    padding-top: 10%;
 }
 
 .effect
@@ -252,11 +243,11 @@ body
     }
     50%
     {
-        -webkit-transform: scale(.7) translate(50px, -50px);
-           -moz-transform: scale(.7) translate(50px, -50px);
-            -ms-transform: scale(.7) translate(50px, -50px);
-             -o-transform: scale(.7) translate(50px, -50px);
-                transform: scale(.7) translate(50px, -50px);
+        -webkit-transform: scale(.7) translate(-50px, -100px);
+           -moz-transform: scale(.7) translate(-50px, -100px);
+            -ms-transform: scale(.7) translate(-50px, -100px);
+             -o-transform: scale(.7) translate(-50px,- 100px);
+                transform: scale(.7) translate(-50px, -100px);
     }
     65%
     {
@@ -264,11 +255,11 @@ body
     }
     100%
     {
-        -webkit-transform: scale(.2) translate(0px, -100px);
-           -moz-transform: scale(.2) translate(0px, -100px);
-            -ms-transform: scale(.2) translate(0px, -100px);
-             -o-transform: scale(.2) translate(0px, -100px);
-                transform: scale(.2) translate(0px, -100px);
+        -webkit-transform: scale(.2) translate(0px, 0px);
+           -moz-transform: scale(.2) translate(0px, 0px);
+            -ms-transform: scale(.2) translate(0px, 0px);
+             -o-transform: scale(.2) translate(0px, 0px);
+                transform: scale(.2) translate(0px, 0px);
 
         opacity: 0;
     }
@@ -306,7 +297,81 @@ body
         opacity: 0;
     }
 }
-.attackbubble
+
+
+
+
+@-webkit-keyframes damageeffectplayer
+{
+    0%
+    {
+        -webkit-transform: scale(1) translate(0px, 0px);
+           -moz-transform: scale(1) translate(0px, 0px);
+            -ms-transform: scale(1) translate(0px, 0px);
+             -o-transform: scale(1) translate(0px, 0px);
+                transform: scale(1) translate(0px, 0px);
+    }
+    50%
+    {
+        -webkit-transform: scale(.7) translate(50px, -100px);
+           -moz-transform: scale(.7) translate(50px, -100px);
+            -ms-transform: scale(.7) translate(50px, -100px);
+             -o-transform: scale(.7) translate(50px, -100px);
+                transform: scale(.7) translate(50px, -100px);
+    }
+    65%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        -webkit-transform: scale(.2) translate(0px, 0px);
+           -moz-transform: scale(.2) translate(0px, 0px);
+            -ms-transform: scale(.2) translate(0px, 0px);
+             -o-transform: scale(.2) translate(0px, 0px);
+                transform: scale(.2) translate(0px, 0px);
+
+        opacity: 0;
+    }
+}
+@keyframes damageeffectplayer
+{
+    0%
+    {
+        -webkit-transform: scale(1) translate(0px, 0px);
+           -moz-transform: scale(1) translate(0px, 0px);
+            -ms-transform: scale(1) translate(0px, 0px);
+             -o-transform: scale(1) translate(0px, 0px);
+                transform: scale(1) translate(0px, 0px);
+    }
+    50%
+    {
+        -webkit-transform: scale(.7) translate(50px, -100px);
+           -moz-transform: scale(.7) translate(50px, -100px);
+            -ms-transform: scale(.7) translate(50px, -100px);
+             -o-transform: scale(.7) translate(50px, -100px);
+                transform: scale(.7) translate(50px, -100px);
+    }
+    65%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        -webkit-transform: scale(.2) translate(0px, 0px);
+           -moz-transform: scale(.2) translate(0px, 0px);
+            -ms-transform: scale(.2) translate(0px, 0px);
+             -o-transform: scale(.2) translate(0px, 0px);
+                transform: scale(.2) translate(0px, 0px);
+
+        opacity: 0;
+    }
+}
+
+
+
+.attackbubble,
+.attackbubbleplayer
 {
     font-family: Arial;
     font-size: 36px;
@@ -328,11 +393,25 @@ body
 
     animation-fill-mode: forwards;
 }
+.attackbubbleplayer
+{
+    margin-top: 200px;
+    margin-left: 250px;
 
+    -webkit-animation: damageeffectplayer .5s  cubic-bezier(0,1,.83,.67) !important;
+       -moz-animation: damageeffectplayer .5s  cubic-bezier(0,1,.83,.67) !important;
+        -ms-animation: damageeffectplayer .5s  cubic-bezier(0,1,.83,.67) !important;
+         -o-animation: damageeffectplayer .5s  cubic-bezier(0,1,.83,.67) !important;
+            animation: damageeffectplayer .5s  cubic-bezier(0,1,.83,.67) !important;
+}
 .shadowwrap
 {
+    position: relative;
+    left: -150px;
+
     width: 190px;
-    margin: -60px auto auto auto;
+    height: 40px;
+    margin: -100px auto auto auto;
     padding: 10px;
 
     opacity: .3;
@@ -357,7 +436,7 @@ body
     display: inline-block;
 
     width: auto;
-    margin: 0 auto;
+    margin: 25px auto;
     padding-left: 30px;
 
     text-align: center;
@@ -375,12 +454,19 @@ body
 {
     width: 120px;
     height: 120px;
-    margin: 60px auto 0 auto;
+    margin: auto auto 0 auto;
 
     border: 1px solid rgba(255,255,255,.2);
     border-radius: 4px;
     background: url('monsprite/char1.gif') center;
     box-shadow: inset 0 0 20px 5px rgba(0,0,0,.5);
+}
+.level
+{
+    padding: 5px;
+
+    border-radius: 50%;
+    background: black;
 }
 .charicon
 {
@@ -396,11 +482,13 @@ body
 #playerhp
 {
     width: 200px;
-    margin: 15px auto;
+    margin: 15px auto 0 auto;
 }
 #enemyhp
 {
-    width: 300px;
+    width: 200px;
+    height: 8px;
+    margin-top: -20px;
 }
 .loginbox
 {
@@ -440,4 +528,171 @@ body
        -moz-box-shadow: inset 0 -9px 11px 0 rgba(50, 50, 50, .3);
             box-shadow: inset 0 -9px 11px 0 rgba(50, 50, 50, .3);
     text-shadow: 1px 1px 0 rgba(0,0,0,.3);
+}
+.fromback
+{
+    position: relative;
+    left: -150px;
+
+    width: 100px;
+    height: 150px;
+    margin: 0 auto;
+
+    background: url('monsprite/back.png') center no-repeat;
+}
+.deathicon
+{
+    display: inline-block;
+
+    width: 128px;
+    height: 128px;
+    margin: auto auto 25px auto;
+
+    background: url('img/tombstone.png');
+
+    -webkit-filter: drop-shadow(4px 4px 5px rgba(0,0,0,.4));
+}
+.death
+{
+    margin: 0 auto;
+
+    text-align: center;
+
+    color: white;
+
+    -webkit-filter: drop-shadow(4px 4px 5px rgba(0,0,0,.4));
+}
+
+.death a
+{
+    font-weight: bold;
+
+    display: inline-block;
+
+    width: 300px;
+    margin: 25px auto auto auto;
+    padding: 10px 0;
+
+    text-align: center;
+    text-decoration: none;
+
+    color: white;
+    border: none;
+    border-radius: 4px;
+    background-color: #e34234;
+    -webkit-box-shadow: inset 0 -9px 11px 0 rgba(50, 50, 50, .3);
+       -moz-box-shadow: inset 0 -9px 11px 0 rgba(50, 50, 50, .3);
+            box-shadow: inset 0 -9px 11px 0 rgba(50, 50, 50, .3);
+    text-shadow: 1px 1px 0 rgba(0,0,0,.3);
+}
+.status
+{
+    display:         flex;
+    display: -webkit-flex;
+    flex-direction: row;
+
+    margin: 20px auto;
+    padding-top: 20px;
+
+    flex: 1;
+    flex-wrap: wrap;
+}
+.statusvalor
+{
+    font-size: 16px;
+
+    width: 60px;
+
+    color: white;
+}
+.wrapstatus
+{
+    width: 100px;
+
+    text-align: center;
+}
+.status .wrapstatus div:nth-child(2)
+{
+    width: 60px;
+    height: 60px;
+    margin: 5px auto;
+
+    cursor: pointer;
+
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 50%;
+    box-shadow: inset 0 -10px 10px rgba(0,0,0,.3);
+
+    -webkit-flex: 1 1 auto;
+            flex: 1 1 auto;
+}
+.status .wrapstatus div:nth-child(2):hover
+{
+    border: 1px solid rgba(255,255,255,.4);
+}
+.status div
+{
+    margin: 0 auto; 
+
+    text-align: center;
+
+    background: transparent;
+}
+.forca
+{
+    background: url('img/swords.png') center no-repeat !important;
+}
+.resistencia
+{
+    background: url('img/shield.png') center no-repeat !important;
+}
+.vitalidade
+{
+    background: url('img/heart.png') center no-repeat !important;
+}
+.status div:nth-child(2):active
+{
+    border-top: none;
+}
+
+.statusbar button
+{
+    width: calc(100% - 30px);
+    margin: 20px auto;
+    padding: 15px;
+
+    cursor: pointer;
+
+    color: white;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 4px;
+    background: none !important;
+    box-shadow: none;
+}
+.statusbar button:hover
+{
+    border: 1px solid rgba(255,255,255,.3);
+}
+
+.botaocura
+{
+    font-size: 13px;
+
+    display: block;
+
+    width: calc(100% - 60px);
+    margin: 20px auto 0 auto  ;
+    padding: 15px;
+
+    cursor: pointer;
+
+    color: white;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 4px;
+    box-shadow: none;
+}
+.statusbar button:hover,
+.botaocura:hover
+{
+    border: 1px solid rgba(255,255,255,.3);
 }
