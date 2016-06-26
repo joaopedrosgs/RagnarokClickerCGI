@@ -88,7 +88,7 @@ setup();
 function attack(e) {
 
 
-    damage = parseFloat(Math.random() % player.forca) + (player.forca / 1.3).toFixed(2);
+    damage = parseFloat((Math.random() % player.forca) + (player.forca / 1.2)).toFixed(2);
     console.log(damage, player.forca);
 
     actualhp = parseFloat((((monstro.hp * actualhp) - damage) / monstro.hp).toFixed(2));
