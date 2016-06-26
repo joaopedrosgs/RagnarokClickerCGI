@@ -29,7 +29,7 @@ int main ()
         printf("ID = 0, volte na página inicial e digite um ID válidon");
         return 0;
     }
-    *id = (*id%32767)+1;
+    *id = (*id%32767);
     
     *player = getcharfromfile(*id);
     int monlevel;
@@ -47,7 +47,6 @@ int main ()
             
             header("Harmony", "../css/master.css");
             printf("<input type='hidden' value='%i' name='id' id='id'>", *id);
-            printf("%i, %i, %in",player->xp, player->level, player->gold );
             printgame(player);
             
             
@@ -62,6 +61,12 @@ int main ()
             
             if(player->xp+*xp > pow(player->level, 1.9)*4) {
                 player->level += 1; //LEVEL UP
+                player->hp+= 10;
+                player->vitalidade++;
+                player->forca++;
+
+                player->resistencia++;
+
                 player->pontos += 5; // adicionando pontos de status
                 player->xp = 0; // RESETANDO XP
             }
@@ -100,12 +105,14 @@ int main ()
             forca -= player->forca;
             res -= player->resistencia;
             vit -= player->vitalidade;
+
             
             if((player->pontos - (forca+res+vit))>=0) {
                 player->forca+=forca;
                 player->resistencia+=res;
                 
                 player->vitalidade+=vit;
+                	player->hp += vit*10;
                 player->pontos -= (forca+vit+res);
             }
             else {printf("erron");}
@@ -121,20 +128,27 @@ int main ()
         
         case DEATH: //death
         // o satan veio te buscar
+        {
         if (player->level-2 < 1) {
             player->forca=5;
             player->resistencia=5;
             player->vitalidade= 5;
             player->level = 1;
+            player->hp=50;
         }
         else {
             player->level -=2;
-            player->forca *= 0.9;
-            player->resistencia *= 0.9;
-            player->vitalidade *= 0.9;
+            player->forca = (int)(player->forca*0.9);
+            player->resistencia= (int)(player->resistencia*0.9);
+            player->vitalidade= (int)(player->vitalidade*0.9);
+            player->hp= (int)(player->hp*0.9);
+
+
         }
+        player->deaths++;
         
         break;
+    }
         
         
     }

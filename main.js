@@ -33,7 +33,9 @@ function updateuser() {
         $(".gold").html(player.gold);
         $(".statusbar h1").html(player.pontos);
         $(".level").html("Level: " + player.level);
-
+        $("#forvalue").html(player.forca);
+        $("#vitvalue").html(player.vitalidade);
+        $("#resvalue").html(player.resistencia);
 
 
     });
@@ -183,7 +185,7 @@ var ataquemonstro = setInterval(function() {
 
 
         $(".content").empty();
-        $(".content").append("<div class='death'><div class='deathicon'></div><h1>Você morreu</h1><div>Perdeu 2 léveis</div><a href='index.cgi?request=0&id=" + playerid + "'>Jogar Novamente!</a></div>");
+        $(".content").append("<div class='death'><div class='deathicon'></div><h1>Você morreu</h1><div>Perdeu 2 níveis e 10% de cada status</div><a href='index.cgi?request=0&id=" + playerid + "'>Jogar Novamente!</a></div>");
 
         $.getJSON('index.cgi?request=5&id=' + playerid + '', function() {
 
