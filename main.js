@@ -86,7 +86,9 @@ setup();
 
 
 function attack(e) {
-    damage = Math.floor(Math.random() * player.forca) + player.forca / 2;
+
+
+    damage = parseFloat(Math.random() % player.forca) + (player.forca / 1.3).toFixed(2);
     console.log(damage, player.forca);
 
     actualhp = parseFloat((((monstro.hp * actualhp) - damage) / monstro.hp).toFixed(2));
@@ -216,7 +218,7 @@ $('.forca').bind('click', function() {
         var forvalue = parseInt($('#forvalue').html());
         forvalue = forvalue + 1;
         player.forca += 1;
-        player.attack += 1;
+ 
         $('#forvalue').before().html(forvalue);
 
         subtractpoints(1);
