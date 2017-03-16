@@ -24,7 +24,7 @@ int main ()
     
     sscanf(data, "request=%i&id=%i&xp=%i&gold=%i", request, id, xp, gold);
     
-    if(*id<=0 && *id>32767){
+    if(*id<=0 || *id>32767){
         cType();
         printf("ID <= 0, volte na página inicial e digite um ID válido");
         return 0;
